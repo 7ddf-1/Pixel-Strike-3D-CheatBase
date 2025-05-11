@@ -1,5 +1,31 @@
-﻿#pragma once
+#pragma once
+
+//NewWeapon -- Class
 bool norecoil = false;
+bool RapidFire = false;
+
+//WeaponController -- Class
+bool MassLoopReload = false;
+
+//RateMenu -- Class
+bool GetReward = false;
+
+
+//PlayerMainController -- Class
+bool SpeedTest = false;
+float SpeedTestSlider = 0.f;
+
+
+//KeyBoardControls -- Class
+bool JumpBoost = false;
+bool Fly = false;
+bool InfiniteJump = false;
+
+
+//InGameLoadouts -- Class
+bool SetWeapon = false;
+
+
 
 bool (*flexorg_NewWeapon)(Unity::CObject* MObj);
 bool NewWeapon(Unity::CObject* MObj) {
@@ -12,13 +38,87 @@ bool NewWeapon(Unity::CObject* MObj) {
 		MObj->SetObscuredValue<float>("newHipRecoil", 0.f);
 	}
 
+	if (RapidFire)
+	{
+		MObj->SetObscuredValue<float>("newFireRate", 0.f);
+		MObj->SetMemberValue<float>("fireRate", 0.f);
+	}
+
     return flexorg_NewWeapon(MObj);
 }
-#define ㅇ_ㅇ "NewWeapon"
-#define ㅎ_ㅎ "Update"
+
+bool (*flexorg_WeaponController)(Unity::CObject* MObj);
+bool WeaponController(Unity::CObject* MObj) {
+
+	if (MassLoopReload)
+	{
+		MObj->CallMethodSafe<void*>("reloadAllWeapons");
+	}
+
+    return flexorg_WeaponController(MObj);
+}
+bool (*flexorg_RateMenu)(Unity::CObject* MObj);
+bool RateMenu(Unity::CObject* MObj) {
+
+	if (GetReward)
+	{
+		MObj->CallMethodSafe<void*>("doReward");
+	}
+
+    return flexorg_RateMenu(MObj);
+}
+
+bool (*flexorg_PlayerMainController)(Unity::CObject* MObj);
+bool PlayerMainController(Unity::CObject* MObj) {
+
+	if (SpeedTest)
+	{
+		MObj->SetObscuredValue<float>("realBaseSpeed", SpeedTestSlider);
+	}
+
+    return flexorg_PlayerMainController(MObj);
+}
+
+bool (*flexorg_KeyboardControls)(Unity::CObject* MObj);
+bool KeyboardControls(Unity::CObject* MObj) {
+
+	if (JumpBoost)
+	{
+		MObj->SetObscuredValue<float>("jumpModifier", 90.f);
+		MObj->SetMemberValue<float>("jump", 90.f);
+	}
+
+	if (Fly)
+	{
+		MObj->SetMemberValue<bool>("onLadder", true);
+	}
+
+	if (InfiniteJump)
+	{
+		MObj->SetMemberValue<bool>("grounded", true);
+	}
+
+    return flexorg_KeyboardControls(MObj);
+}
+bool (*flexorg_InGameLoadouts)(Unity::CObject* MObj);
+bool InGameLoadouts(Unity::CObject* MObj) {
+
+	if (SetWeapon)
+	{
+		MObj->CallMethodSafe<void*, int, int>("setWeapon", 1606, 1606);
+	}
+
+    return flexorg_InGameLoadouts(MObj);
+}
+
 bool hookz()
 {
-	_Z(ㅇ_ㅇ, ㅎ_ㅎ, NewWeapon);
+	_Z("NewWeapon", "Update", NewWeapon);
+	_Z("WeaponController", "Update", WeaponController);
+	_Z("RateMenu", "Update", RateMenu);
+	_Z("PlayerController", "Update", PlayerMainController);
+	_Z("KeyboardControls", "Update", KeyboardControls);
+	_Z("InGameLoadouts", "Start", InGameLoadouts);
 
 }
 
