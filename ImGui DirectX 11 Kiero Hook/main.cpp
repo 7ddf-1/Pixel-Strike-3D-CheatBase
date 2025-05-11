@@ -59,6 +59,53 @@ HRESULT __stdcall hkPresent(IDXGISwapChain* pSwapChain, UINT SyncInterval, UINT 
 		ImGui::Separator();
 		ImGui::Spacing();
 		ImGui::Checkbox("No Recoil", &norecoil);
+
+		ImGui::Spacing();
+
+		ImGui::Checkbox("Mass Loop Reload", &MassLoopReload);
+
+		ImGui::Spacing();
+
+		ImGui::Checkbox("Speed Test", &SpeedTest);
+		ImGui::SameLine();
+		ImGui::Text("[Bannable]");
+		ImGui::Spacing();
+
+		ImGui::Checkbox("Jump Boost", &JumpBoost);
+		ImGui::Spacing();
+
+		ImGui::Checkbox("Fly", &Fly);
+
+		ImGui::Spacing();
+
+		ImGui::Checkbox("Infinite Jump", &InfiniteJump);
+
+		ImGui::Spacing();
+
+		ImGui::Checkbox("Rapid Fire", &RapidFire);
+
+		ImGui::Spacing();
+
+		ImGui::Checkbox("Set Weapon", &SetWeapon);
+
+		ImGui::Spacing();
+
+		ImGui::Spacing();
+
+		if (SpeedTest)
+		{
+			ImGui::SliderFloat("Speed", &SpeedTestSlider, 0.f, 120.f);
+		}
+
+
+		if (ImGui::Button("Get Reward"))
+		{
+			GetReward = true;
+		}
+		else
+			GetReward = false;
+
+
 		ImGui::End();
 	}
 	ImGui::Render();
