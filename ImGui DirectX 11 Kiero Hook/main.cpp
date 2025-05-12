@@ -98,7 +98,7 @@ int PF() {
 	printf(" \\______/  \\______/ |_______/  \n");
 	printf("\n");
 	printf("==========================================\n");
-	printf("   Base Made By (7DDf Aka nigger)     \n");
+	printf("   Base Made By (7DDf Aka 0SD47)     \n");
 	printf("==========================================\n");
 
 	return 0;
