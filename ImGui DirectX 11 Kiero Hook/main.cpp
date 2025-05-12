@@ -86,6 +86,24 @@ bool Hooks()
 uintptr_t Base = (uintptr_t)GetModuleHandleW(L"GameAssembly.dll");
 DWORD pid = GetCurrentProcessId();
 
+int PF() {
+	printf("\n");
+	printf("  /$$$$$$   /$$$$$$  /$$$$$$$  \n");
+	printf(" /$$__  $$ /$$__  $$| $$__  $$ \n");
+	printf("| $$  \\ $$| $$  \\__/| $$  \\ $$ \n");
+	printf("| $$  | $$|  $$$$$$ | $$  | $$ \n");
+	printf("| $$  | $$ \\____  $$| $$  | $$ \n");
+	printf("| $$  | $$ /$$  \\ $$| $$  | $$ \n");
+	printf("|  $$$$$$/|  $$$$$$/| $$$$$$$/ \n");
+	printf(" \\______/  \\______/ |_______/  \n");
+	printf("\n");
+	printf("==========================================\n");
+	printf("   Base Made By (7DDf Aka OSD47)     \n");
+	printf("==========================================\n");
+
+	return 0;
+}
+
 
 void safecall()
 {
@@ -94,11 +112,12 @@ void safecall()
 	freopen_s(&fp, "CONOUT$", "w", stdout);;
 	SetConsoleTitleA("Pixel Strike Base By 0SD47");
 	const HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
-
+	PF();
 	printf("Base address: 0x%p\n", (void*)Base);
 	printf("Process ID: %lu\n", pid);
 	IL2CPP::Initialize();
 	Hooks();
+	
 }
 
 
