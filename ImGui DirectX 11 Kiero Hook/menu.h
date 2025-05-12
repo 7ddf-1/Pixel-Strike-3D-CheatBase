@@ -1,6 +1,6 @@
 #pragma once
 #include "includes.h"
-
+//100% Not Skidded
 void DrawUI()
 {
     auto _sw_size = 600, _sw_sizeh = 400;
