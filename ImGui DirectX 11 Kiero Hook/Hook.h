@@ -113,12 +113,12 @@ bool InGameLoadouts(Unity::CObject* MObj) {
 
 bool hookz()
 {
-	_Z("NewWeapon", "Update", NewWeapon);
-	_Z("WeaponController", "Update", WeaponController);
-	_Z("RateMenu", "Update", RateMenu);
-	_Z("PlayerController", "Update", PlayerMainController);
-	_Z("KeyboardControls", "Update", KeyboardControls);
-	_Z("InGameLoadouts", "Start", InGameLoadouts);
+	Z("NewWeapon", "Update", NewWeapon);
+	Z("WeaponController", "Update", WeaponController);
+	Z("RateMenu", "Update", RateMenu);
+	Z("PlayerController", "Update", PlayerMainController);
+	Z("KeyboardControls", "Update", KeyboardControls);
+	Z("InGameLoadouts", "Start", InGameLoadouts);
 
 }
 
