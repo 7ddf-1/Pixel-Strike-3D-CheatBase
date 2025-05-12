@@ -60,7 +60,7 @@ HRESULT __stdcall hkPresent(IDXGISwapChain* pSwapChain, UINT SyncInterval, UINT 
 		showMenu = !showMenu;
 
 	if (showMenu)
-	Drawui();
+	DrawUI();
 
 	ImGui::Render();
 	pContext->OMSetRenderTargets(1, &mainRenderTargetView, nullptr);
