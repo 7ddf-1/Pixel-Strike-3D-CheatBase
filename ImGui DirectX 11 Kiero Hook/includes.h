@@ -9,8 +9,9 @@
 #include "MainPoint/IL2CPP_Resolver-main/IL2CPP_Resolver.hpp"
 #include "MainPoint/MainPoint.h"
 #include "Hook.h"
+#include "menu.h"
 
 typedef HRESULT(__stdcall* Present) (IDXGISwapChain* pSwapChain, UINT SyncInterval, UINT Flags);
 typedef LRESULT(CALLBACK* WNDPROC)(HWND, UINT, WPARAM, LPARAM);
 typedef uintptr_t PTR;
-ImGuiWindowFlags winflags = ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoResize;
+
