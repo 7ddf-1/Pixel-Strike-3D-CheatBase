@@ -1,6 +1,6 @@
 #pragma once
 #include "includes.h"
-//100% Not Skidded
+//  100% not skidded
 void DrawUI()
 {
     auto _sw_size = 600, _sw_sizeh = 400;
@@ -58,7 +58,7 @@ void DrawUI()
             ImGui::PopStyleColor(3);
             };
 
-        _sw_dt("Combat", 0, 60);
+        _sw_dt("GamePlay", 0, 60);
         _sw_dt("Movement", 1, 110);
 
         ImGui::EndChild();
@@ -84,7 +84,7 @@ void DrawUI()
 
         if (_sw_tab == 0)
         {
-            ImGui::Text("Combat Features");
+            ImGui::Text("GamePlay Features");
             ImGui::Separator();
             ImGui::Spacing();
             ImGui::Spacing();
