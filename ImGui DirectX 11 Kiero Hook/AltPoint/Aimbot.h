@@ -1,5 +1,5 @@
 #pragma once
-std::vector<Unity::CGameObject*> healthObjects;
+std::vector<Unity::CGameObject*> healthObj;
 float Vector2distance(const Unity::Vector2& a, const Unity::Vector2& b) {
     float dx = a.x - b.x;
     float dy = a.y - b.y;
@@ -9,11 +9,11 @@ Unity::Vector2 getclosestone() {
     float closest = 9999999.f;
     Unity::Vector2 result = ScreenCenter;
     bool found = false;
-    for (size_t i = 0; i < healthObjects.size(); ++i) {
-        if (!healthObjects[i])
+    for (size_t i = 0; i < healthObj.size(); ++i) {
+        if (!healthObj[i])
             continue;
 
-        auto t = healthObjects[i]->GetTransform();
+        auto t = healthObj[i]->GetTransform();
         if (!t)
             continue;
         Unity::Vector3 pos = t->GetPosition();
