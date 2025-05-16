@@ -1,5 +1,18 @@
 ﻿#pragma once
 
+
+//Random Vir
+bool esp2d = false;
+bool showaimbotmenu = false;
+float Smoothness = 2.0f;
+bool aimact = false;
+int aimKey = VK_XBUTTON2;
+float fov = 60.0f;
+bool showFov = true;
+bool aimbot = true;
+int currentHotkey = 1;
+
+
 //NewWeapon -- Class
 bool norecoil = false;
 bool RapidFire = false;
@@ -24,8 +37,6 @@ bool InfiniteJump = false;
 
 //InGameLoadouts -- Class
 bool SetWeapon = false;
-
-
 
 bool (*flexorg_NewWeapon)(Unity::CObject* MObj);
 bool NewWeapon(Unity::CObject* MObj) {
@@ -124,3 +135,27 @@ bool hookz()
 
 }
 
+inline const char* HotKeys[] =
+{
+	"0", "1", "2", "3", "4", "5", "6", "7", "8", "9",
+	"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z",
+	"F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9", "F10", "F11", "F12",
+	"Esc", "Tab", "Caps Lock", "Num Lock", "Scroll Lock", "Enter", "Backspace",
+	"Insert", "Delete", "Home", "End", "Page Up", "Page Down",
+	"Up Arrow", "Down Arrow", "Left Arrow", "Right Arrow", "Print Screen", "Pause/Break",
+	"Left Shift", "Right Shift", "Left Ctrl", "Right Ctrl", "Left Alt", "Right Alt", "Left Win", "Right Win",
+	"Left Mouse Button", "Right Mouse Button", "Middle Mouse Button", "Mouse Button 4", "Mouse Button 5",
+	"Spacebar", "Menu"
+};
+inline int HotKeyCodes[] =
+{
+	'0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
+	'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
+	VK_F1, VK_F2, VK_F3, VK_F4, VK_F5, VK_F6, VK_F7, VK_F8, VK_F9, VK_F10, VK_F11, VK_F12,
+	VK_ESCAPE, VK_TAB, VK_CAPITAL, VK_NUMLOCK, VK_SCROLL, VK_RETURN, VK_BACK,
+	VK_INSERT, VK_DELETE, VK_HOME, VK_END, VK_PRIOR, VK_NEXT,
+	VK_UP, VK_DOWN, VK_LEFT, VK_RIGHT, VK_SNAPSHOT, VK_PAUSE,
+	VK_LSHIFT, VK_RSHIFT, VK_LCONTROL, VK_RCONTROL, VK_LMENU, VK_RMENU, VK_LWIN, VK_RWIN,
+	VK_LBUTTON, VK_RBUTTON, VK_MBUTTON, VK_XBUTTON1, VK_XBUTTON2,
+	VK_SPACE, VK_APPS
+};

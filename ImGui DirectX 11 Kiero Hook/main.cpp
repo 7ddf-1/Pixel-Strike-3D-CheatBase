@@ -1,5 +1,7 @@
 #include "includes.h"
 #include "AltPoint/Drawing.h"
+#include "AltPoint/Aimbot.h"
+
 extern LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 Present oPresent;
 HWND window = NULL;
@@ -26,6 +28,9 @@ LRESULT __stdcall WndProc(const HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lPar
 	return CallWindowProc(oWndProc, hWnd, uMsg, wParam, lParam);
 }
 
+
+
+
 bool init = false;
 HRESULT __stdcall hkPresent(IDXGISwapChain* pSwapChain, UINT SyncInterval, UINT Flags)
 {
@@ -51,25 +56,21 @@ HRESULT __stdcall hkPresent(IDXGISwapChain* pSwapChain, UINT SyncInterval, UINT 
 		else
 			return oPresent(pSwapChain, SyncInterval, Flags);
 	}
-
 	ImGui_ImplDX11_NewFrame();
 	ImGui_ImplWin32_NewFrame();
 	ImGui::NewFrame();
-
+	LoopESP();
+	LoopAimbot();
 	if (GetAsyncKeyState(VK_F1) & 1)
 		showMenu = !showMenu;
-
 	if (showMenu)
 	DrawUI();
-
 	ImGui::Render();
 	pContext->OMSetRenderTargets(1, &mainRenderTargetView, nullptr);
 	ImGui_ImplDX11_RenderDrawData(ImGui::GetDrawData());
 
 	return oPresent(pSwapChain, SyncInterval, Flags);
 }
-
-
 bool Hooks()
 {
 	std::cout << "Hooks initialization starting..." << std::endl;
@@ -85,7 +86,6 @@ bool Hooks()
 }
 uintptr_t Base = (uintptr_t)GetModuleHandleW(L"GameAssembly.dll");
 DWORD pid = GetCurrentProcessId();
-
 int PF() {
 	printf("\n");
 	printf("  /$$$$$$   /$$$$$$  /$$$$$$$  \n");
@@ -103,8 +103,6 @@ int PF() {
 
 	return 0;
 }
-
-
 void safecall()
 {
 	AllocConsole();
@@ -119,15 +117,6 @@ void safecall()
 	Hooks();
 	
 }
-
-
-
-
-
-
-
-
-
 DWORD WINAPI MainThread(LPVOID lpReserved)
 {
 	bool init_hook = false;
