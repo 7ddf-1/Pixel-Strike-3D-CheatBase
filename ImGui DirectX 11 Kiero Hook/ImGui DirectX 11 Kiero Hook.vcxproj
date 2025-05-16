@@ -164,6 +164,7 @@
     <ResourceCompile Include="kiero\minhook\dll_resources\MinHook.rc" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AltPoint\Aimbot.h" />
     <ClInclude Include="AltPoint\Drawing.h" />
     <ClInclude Include="Hook.h" />
     <ClInclude Include="imgui\imconfig.h" />
