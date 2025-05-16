@@ -1,12 +1,12 @@
 #include "AltPoint/Aimbot.h"
 void MainEsp2D() {
-    MountainHarvest(&healthObjects, "Health");
+    MountainHarvest(&healthObj, "Health");
     ImDrawList* drawL = ImGui::GetBackgroundDrawList();
     ScreenSize = Unity::Vector2(ImGui::GetIO().DisplaySize.x, ImGui::GetIO().DisplaySize.y);
     ScreenCenter = Unity::Vector2(ScreenSize.x / 2, ScreenSize.y / 2);
 
-    for (size_t i = 0; i < healthObjects.size(); i++) {
-        auto obj = healthObjects[i]; if (!obj) continue;
+    for (size_t i = 0; i < healthObj.size(); i++) {
+        auto obj = healthObj[i]; if (!obj) continue;
         auto transform = obj->GetTransform(); if (!transform) continue;
         Unity::Vector3 worldPos = transform->GetPosition();
         Unity::Vector3 headPos = worldPos; headPos.y += 3.1f;
