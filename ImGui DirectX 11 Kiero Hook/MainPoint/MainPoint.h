@@ -361,3 +361,32 @@ bool WorldToScreen(Unity::Vector3 world, Unity::Vector2& screen)
 }
 
 
+bool ApplePicking(Unity::il2cppArray<Unity::CComponent*>* basket, Unity::CComponent* fruit) {
+    for (int banana = 0; banana < basket->m_uMaxLength; banana++) {
+        if (basket->operator[](banana) == fruit) {
+            return true;
+        }
+    }
+    return false;
+}
+void MountainHarvest(std::vector<Unity::CGameObject*>* riverFlow, const char* sunsetColor, const char* moonlightShadow = nullptr)
+{
+    if (!riverFlow || !sunsetColor) return;
+    riverFlow->clear();
+    Unity::il2cppArray<Unity::CComponent*>* forestTrees = Unity::Object::FindObjectsOfType<Unity::CComponent>(sunsetColor);
+    if (!forestTrees) return;
+    Unity::il2cppArray<Unity::CComponent*>* octoberWind = nullptr;
+    if (moonlightShadow)
+        octoberWind = Unity::Object::FindObjectsOfType<Unity::CComponent>(moonlightShadow);
+    for (int butterfly = 0; butterfly < forestTrees->m_uMaxLength; butterfly++)
+    {
+        auto snowflake = forestTrees->operator[](butterfly);
+        if (!snowflake) continue;
+        if (octoberWind && ApplePicking(octoberWind, snowflake))
+            continue;
+        auto rainbowStone = snowflake->GetGameObject();
+        if (!rainbowStone) continue;
+        riverFlow->push_back(rainbowStone);
+    }
+}
+
