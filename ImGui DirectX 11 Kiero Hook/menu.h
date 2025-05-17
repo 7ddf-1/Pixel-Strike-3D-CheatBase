@@ -61,17 +61,6 @@ void DrawUI()
                 ImGui::Text("Movement Features");
                 ImGui::Separator();
                 ImGui::Spacing();
-                ImGui::Checkbox("Speed Test", &SpeedTest);
-                ImGui::SameLine();
-                ImGui::TextColored(ImVec4(1.0f, 0.3f, 0.3f, 1.0f), "[Bannable]");
-                ImGui::Spacing();
-                if (SpeedTest)
-                {
-                    ImGui::SliderFloat("Speed Multiplier", &SpeedTestSlider, 0.0f, 120.0f, "%.1f");
-                }
-                ImGui::Spacing();
-                ImGui::Checkbox("Jump Boost", &JumpBoost);
-                ImGui::Spacing();
                 ImGui::Checkbox("Fly", &Fly);
                 ImGui::Spacing();
                 ImGui::Checkbox("Infinite Jump", &InfiniteJump);
