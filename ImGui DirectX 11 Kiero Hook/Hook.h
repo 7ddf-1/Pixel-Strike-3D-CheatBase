@@ -122,8 +122,7 @@ bool InGameLoadouts(Unity::CObject* MObj) {
     return flexorg_InGameLoadouts(MObj);
 }
 
-
-bool hookz()
+void hookz()
 {
 	
 	Z("NewWeapon", "Update", NewWeapon);
@@ -132,10 +131,9 @@ bool hookz()
 	Z("PlayerController", "Update", PlayerMainController);
 	Z("KeyboardControls", "Update", KeyboardControls);
 	Z("InGameLoadouts", "Start", InGameLoadouts);
-
 }
 
-inline const char* HotKeys[] =
+const char* HotKeys[] =
 {
 	"0", "1", "2", "3", "4", "5", "6", "7", "8", "9",
 	"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z",
@@ -147,7 +145,7 @@ inline const char* HotKeys[] =
 	"Left Mouse Button", "Right Mouse Button", "Middle Mouse Button", "Mouse Button 4", "Mouse Button 5",
 	"Spacebar", "Menu"
 };
-inline int HotKeyCodes[] =
+int HotKeyCodes[] =
 {
 	'0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
 	'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
