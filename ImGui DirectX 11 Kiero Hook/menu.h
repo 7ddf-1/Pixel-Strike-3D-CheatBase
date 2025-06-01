@@ -43,6 +43,12 @@ void DrawUI()
                 ImGui::Spacing();
                 ImGui::Checkbox("Set Weapon", &SetWeapon);
                 ImGui::Spacing();
+                ImGui::Checkbox("Grenade Bullet", &GrenadeBullet);
+                ImGui::SameLine();
+                ImGui::TextColored(ImVec4(1.0f, 0.3f, 0.3f, 1.0f), "[Bannable]");
+                ImGui::Spacing();
+                ImGui::Checkbox("No Equipment Cooldown", &NoEquipmentCooldown);
+                ImGui::Spacing();
                 ImGui::Checkbox("ESP 2D", &esp2d);
                 ImGui::Spacing();
                 ImGui::Spacing();
