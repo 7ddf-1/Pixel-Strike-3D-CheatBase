@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 
 
 //Random Vir
@@ -16,9 +16,11 @@ int currentHotkey = 1;
 //NewWeapon -- Class
 bool norecoil = false;
 bool RapidFire = false;
+bool GrenadeBullet = false;
 
 //WeaponController -- Class
 bool MassLoopReload = false;
+bool NoEquipmentCooldown = false;
 
 //RateMenu -- Class
 bool GetReward = false;
@@ -55,6 +57,12 @@ bool NewWeapon(Unity::CObject* MObj) {
 		MObj->SetMemberValue<float>("fireRate", 0.f);
 	}
 
+	if (GrenadeBullet)
+	{
+		MObj->SetMemberValue<int>("weaponType", 5); // 0=STANDARD, 1=SHOTGUN, 2=SNIPER, 3=DUAL, 4=MELEE, 5=GRENADE, 6=BURST, 7=AREA_DAMAGE, 8=CUSTOM, 9=PROJECTILE, 10=BURST_SHOTGUN, 11=DUAL_MELEE
+
+	}
+
     return flexorg_NewWeapon(MObj);
 }
 
@@ -64,6 +72,11 @@ bool WeaponController(Unity::CObject* MObj) {
 	if (MassLoopReload)
 	{
 		MObj->CallMethodSafe<void*>("reloadAllWeapons");
+	}
+
+	if (NoEquipmentCooldown)
+	{
+		MObj->SetMemberValue<float>("equipmentCooldown", 0.f);
 	}
 
     return flexorg_WeaponController(MObj);
@@ -133,6 +146,7 @@ bool hookz()
 	Z("KeyboardControls", "Update", KeyboardControls);
 	Z("InGameLoadouts", "Start", InGameLoadouts);
 
+	return true;
 }
 
 inline const char* HotKeys[] =
